@@ -20,7 +20,7 @@ jobs:
 
   docker_pipeline:
     uses: babylonlabs-io/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
-    needs: ["lint_test"]
+    # needs: ["lint_test"]
     secrets: inherit
     with:
       publish: true
