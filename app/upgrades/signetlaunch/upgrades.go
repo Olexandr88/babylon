@@ -23,10 +23,17 @@ import (
 	btclighttypes "github.com/babylonlabs-io/babylon/x/btclightclient/types"
 )
 
+const (
+	ZoneConciergeStoreKey = "zoneconcierge"
+)
+
 var Upgrade = upgrades.Upgrade{
 	UpgradeName:          "signet-launch",
 	CreateUpgradeHandler: CreateUpgradeHandler,
-	StoreUpgrades:        store.StoreUpgrades{},
+	// Upgrade necessary for deletions of `zoneconcierge`
+	StoreUpgrades: store.StoreUpgrades{
+		Deleted: []string{ZoneConciergeStoreKey},
+	},
 }
 
 // CreateUpgradeHandler upgrade handler for launch.
